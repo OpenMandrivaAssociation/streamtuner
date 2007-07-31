@@ -65,12 +65,6 @@ rm -rf %buildroot
 rm -fr $RPM_BUILD_ROOT/var/lib
 %find_lang %name --with-gnome
 
-#menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="sound_section.png" needs="x11" title="StreamTuner" longtitle="Audio Stream Browser" section="Multimedia/Sound"
-EOF
-
 #icons
 mkdir -p $RPM_BUILD_ROOT/%_liconsdir
 convert -size 48x48 art/%name.png $RPM_BUILD_ROOT/%_liconsdir/%name.png
@@ -84,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %update_menus
-%udate_scrollkeeper
+%update_scrollkeeper
 		
 %postun
 %clean_menus
@@ -94,7 +88,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README COPYING AUTHORS NEWS TODO
 %{_bindir}/%{name}*
-%{_menudir}/%name
 %{_datadir}/%name
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
