@@ -1,6 +1,6 @@
 %define name	streamtuner
 %define version 0.99.99
-%define release %mkrel 7
+%define release %mkrel 8
 
 Name: 	 	%{name}
 Summary: 	Internet audio stream browser
@@ -9,14 +9,18 @@ Release: 	%{release}
 
 Source:		%{name}-%{version}.tar.bz2
 Patch:		streamtuner-0.99.99-live365.diff
+Patch1: streamtuner-0.99.99-helpdir.patch
 URL:		http://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: 	gtk2-devel, ImageMagick, scrollkeeper, curl-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	gtk-doc
 Requires:	xterm, taglib
 Requires:	%name-plugins
+Requires(post): scrollkeeper
+Requires(postun): scrollkeeper
 
 %description
 Streamtuner is a stream directory browser. It offers an intuitive and unified
@@ -46,15 +50,20 @@ Live365, Shoutcast and other...
 %prep
 %setup -q
 %patch
+%patch1 -p1
+aclocal -I m4
+autoconf
+automake
 
 %build
 %configure2_5x --disable-gtktest
 %make
 										
 %install
+rm -rf %buildroot
 %makeinstall
 rm -fr $RPM_BUILD_ROOT/var/lib
-%find_lang %name
+%find_lang %name --with-gnome
 
 #menu
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
@@ -86,13 +95,10 @@ if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q
 %doc README COPYING AUTHORS NEWS TODO
 %{_bindir}/%{name}*
 %{_menudir}/%name
-#%{_mandir}/man1/*
 %{_datadir}/%name
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
-#%{_docdir}/%name
 %{_datadir}/omf/%name
-%{_datadir}/help/%name
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
