@@ -84,11 +84,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %update_menus
-if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q || true ; fi
+%udate_scrollkeeper
 		
 %postun
 %clean_menus
-if [ -x %{_bindir}/scrollkeeper-update ]; then %{_bindir}/scrollkeeper-update -q || true ; fi
+%clean_scrollkeeper
 
 %files -f %name.lang
 %defattr(-,root,root)
