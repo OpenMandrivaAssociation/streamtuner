@@ -1,6 +1,6 @@
 %define name	streamtuner
 %define version 0.99.99
-%define release %mkrel 8
+%define release %mkrel 9
 
 Name: 	 	%{name}
 Summary: 	Internet audio stream browser
@@ -8,8 +8,9 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source:		%{name}-%{version}.tar.bz2
-Patch:		streamtuner-0.99.99-live365.diff
-Patch1: streamtuner-0.99.99-helpdir.patch
+Patch:		%{name}-%{version}-live365.diff
+Patch1:		%{name}-%{version}-helpdir.patch
+Patch2:		%{name}-%{version}-xdgconfig.patch
 URL:		http://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
@@ -51,6 +52,8 @@ Live365, Shoutcast and other...
 %setup -q
 %patch
 %patch1 -p1
+%patch2
+intltoolize --force
 aclocal -I m4
 autoconf
 automake
