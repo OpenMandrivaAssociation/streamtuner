@@ -14,6 +14,7 @@ Patch2:		%{name}-%{version}-xdgconfig.patch
 URL:		http://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: 	gtk2-devel, ImageMagick, scrollkeeper, curl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gtk-doc intltool
