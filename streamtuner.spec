@@ -1,6 +1,6 @@
 %define name	streamtuner
 %define version 0.99.99
-%define release %mkrel 9
+%define release %mkrel 10
 
 Name: 	 	%{name}
 Summary: 	Internet audio stream browser
@@ -18,7 +18,9 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: 	gtk2-devel, ImageMagick, scrollkeeper, curl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gtk-doc intltool
-Requires:	xterm, taglib
+BuildRequires:	taglib-devel
+BuildRequires:	pygtk2.0-devel
+Requires:	xterm
 Requires:	%name-plugins
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
