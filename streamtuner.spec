@@ -1,6 +1,6 @@
 %define name	streamtuner
 %define version 0.99.99
-%define release %mkrel 14
+%define release %mkrel 15
 
 Name: 	 	%{name}
 Summary: 	Internet audio stream browser
