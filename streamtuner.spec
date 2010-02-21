@@ -8,10 +8,11 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source:		%{name}-%{version}.tar.bz2
-Patch:		%{name}-%{version}-live365.diff
+Patch0:		%{name}-%{version}-live365.diff
 Patch1:		%{name}-%{version}-helpdir.patch
 Patch2:		%{name}-%{version}-xdgconfig.patch
 Patch3:		%{name}-%{version}-shoutcast_url.patch
+Patch4:		streamtuner-0.99.99-fix-link.patch
 URL:		http://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
@@ -53,22 +54,20 @@ Live365, Shoutcast and other...
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1 -p1
 %patch2
 %patch3
-intltoolize --force
-aclocal -I m4
-autoconf
-automake
+%patch4 -b .link
 
 %build
+./autogen.sh
 %configure2_5x --disable-gtktest
 %make
-										
+
 %install
 rm -rf %buildroot
-%makeinstall
+%makeinstall_std
 rm -fr $RPM_BUILD_ROOT/var/lib
 %find_lang %name --with-gnome
 
@@ -100,6 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README COPYING AUTHORS NEWS TODO
 %{_bindir}/%{name}*
 %{_datadir}/%name
+%{_datadir}/help/streamtuner/C
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
 %{_datadir}/omf/%name
