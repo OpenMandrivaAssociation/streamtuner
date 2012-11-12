@@ -1,0 +1,134 @@
+--- src/plugins/live365/Makefile.am.link	2004-12-11 02:08:21.000000000 +0100
++++ src/plugins/live365/Makefile.am	2010-02-21 19:39:56.000000000 +0100
+@@ -3,5 +3,6 @@
+ plugins_LTLIBRARIES = live365.la
+ live365_la_SOURCES = live365.c
+ live365_la_LDFLAGS = -avoid-version -module
++live365_la_LIBADD = $(GTK_LIBS)
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS)
+--- src/plugins/live365/Makefile.in.link	2010-02-21 19:40:14.000000000 +0100
++++ src/plugins/live365/Makefile.in	2010-02-21 19:40:36.000000000 +0100
+@@ -52,7 +52,7 @@
+ am__installdirs = "$(DESTDIR)$(pluginsdir)"
+ pluginsLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(plugins_LTLIBRARIES)
+-live365_la_LIBADD =
++live365_la_LIBADD = $(GTK_LIBS)
+ am_live365_la_OBJECTS = live365.lo
+ live365_la_OBJECTS = $(am_live365_la_OBJECTS)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+--- src/plugins/local/Makefile.am.link	2004-12-11 02:09:29.000000000 +0100
++++ src/plugins/local/Makefile.am	2010-02-21 19:39:56.000000000 +0100
+@@ -2,6 +2,7 @@
+ 
+ plugins_LTLIBRARIES = local.la
+ local_la_SOURCES = local.c
+-local_la_LDFLAGS = -avoid-version -module $(TAGLIB_LIBS)
++local_la_LDFLAGS = -avoid-version -module
++local_la_LIBADD = $(TAGLIB_LIBS) $(GTK_LIBS)
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS) $(TAGLIB_CFLAGS)
+--- src/plugins/local/Makefile.in.link	2010-02-21 19:41:10.000000000 +0100
++++ src/plugins/local/Makefile.in	2010-02-21 19:41:34.000000000 +0100
+@@ -52,7 +52,7 @@
+ am__installdirs = "$(DESTDIR)$(pluginsdir)"
+ pluginsLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(plugins_LTLIBRARIES)
+-local_la_LIBADD =
++local_la_LIBADD = $(TAGLIB_LIBS) $(GTK_LIBS)
+ am_local_la_OBJECTS = local.lo
+ local_la_OBJECTS = $(am_local_la_OBJECTS)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+@@ -267,7 +267,7 @@
+ 
+ plugins_LTLIBRARIES = local.la
+ local_la_SOURCES = local.c
+-local_la_LDFLAGS = -avoid-version -module $(TAGLIB_LIBS)
++local_la_LDFLAGS = -avoid-version -module
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS) $(TAGLIB_CFLAGS)
+ all: all-am
+ 
+--- src/plugins/python/Makefile.am.link	2004-12-13 07:12:43.000000000 +0100
++++ src/plugins/python/Makefile.am	2010-02-21 19:39:56.000000000 +0100
+@@ -19,7 +19,8 @@
+ 	pst-stream.h		\
+ 	pst-transfer-session.c	\
+ 	pst-transfer-session.h
+-python_la_LDFLAGS = -avoid-version -module $(EMBEDDED_PYTHON_LIBS) $(PYGTK_LIBS)
++python_la_LDFLAGS = -avoid-version -module
++python_la_LIBADD = $(EMBEDDED_PYTHON_LIBS) $(PYGTK_LIBS)
+ 
+ scriptsdir = $(pkgdatadir)/python/scripts
+ iconsdir = $(pkgdatadir)/python/icons
+--- src/plugins/python/Makefile.in.link	2010-02-21 19:41:46.000000000 +0100
++++ src/plugins/python/Makefile.in	2010-02-21 19:42:12.000000000 +0100
+@@ -54,7 +54,7 @@
+ am__installdirs = "$(DESTDIR)$(pluginsdir)" "$(DESTDIR)$(iconsdir)" "$(DESTDIR)$(scriptsdir)"
+ pluginsLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(plugins_LTLIBRARIES)
+-python_la_LIBADD =
++python_la_LIBADD = $(EMBEDDED_PYTHON_LIBS) $(PYGTK_LIBS)
+ am_python_la_OBJECTS = pst.lo pst-category.lo pst-handler-config.lo \
+ 	pst-handler-field.lo pst-handler.lo pst-helpers.lo pst-main.lo \
+ 	pst-stream.lo pst-transfer-session.lo
+@@ -300,7 +300,7 @@
+ 	pst-transfer-session.c	\
+ 	pst-transfer-session.h
+ 
+-python_la_LDFLAGS = -avoid-version -module $(EMBEDDED_PYTHON_LIBS) $(PYGTK_LIBS)
++python_la_LDFLAGS = -avoid-version -module
+ scriptsdir = $(pkgdatadir)/python/scripts
+ iconsdir = $(pkgdatadir)/python/icons
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS) $(EMBEDDED_PYTHON_CFLAGS) $(PYGTK_CFLAGS) \
+--- src/plugins/shoutcast/Makefile.am.link	2004-12-11 02:11:48.000000000 +0100
++++ src/plugins/shoutcast/Makefile.am	2010-02-21 19:39:56.000000000 +0100
+@@ -3,5 +3,6 @@
+ plugins_LTLIBRARIES = shoutcast.la
+ shoutcast_la_SOURCES = shoutcast.c
+ shoutcast_la_LDFLAGS = -avoid-version -module
++shoutcast_la_LIBADD = $(GTK_LIBS)
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS)
+--- src/plugins/shoutcast/Makefile.in.link	2010-02-21 19:42:22.000000000 +0100
++++ src/plugins/shoutcast/Makefile.in	2010-02-21 19:42:38.000000000 +0100
+@@ -52,7 +52,7 @@
+ am__installdirs = "$(DESTDIR)$(pluginsdir)"
+ pluginsLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(plugins_LTLIBRARIES)
+-shoutcast_la_LIBADD =
++shoutcast_la_LIBADD = $(GTK_LIBS)
+ am_shoutcast_la_OBJECTS = shoutcast.lo
+ shoutcast_la_OBJECTS = $(am_shoutcast_la_OBJECTS)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+--- src/plugins/xiph/Makefile.am.link	2004-12-11 02:12:31.000000000 +0100
++++ src/plugins/xiph/Makefile.am	2010-02-21 19:39:56.000000000 +0100
+@@ -2,6 +2,7 @@
+ 
+ plugins_LTLIBRARIES = xiph.la
+ xiph_la_SOURCES = xiph.c
+-xiph_la_LDFLAGS = -avoid-version -module $(LIBXML_LIBS)
++xiph_la_LDFLAGS = -avoid-version -module
++xiph_la_LIBADD = $(LIBXML_LIBS) $(GTK_LIBS)
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS) $(LIBXML_CFLAGS)
+--- src/plugins/xiph/Makefile.in.link	2010-02-21 19:42:45.000000000 +0100
++++ src/plugins/xiph/Makefile.in	2010-02-21 19:43:23.000000000 +0100
+@@ -52,7 +52,7 @@
+ am__installdirs = "$(DESTDIR)$(pluginsdir)"
+ pluginsLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(plugins_LTLIBRARIES)
+-xiph_la_LIBADD =
++xiph_la_LIBADD = $(GTK_LIBS) $(LIBXML_LIBS)
+ am_xiph_la_OBJECTS = xiph.lo
+ xiph_la_OBJECTS = $(am_xiph_la_OBJECTS)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+@@ -267,7 +267,7 @@
+ 
+ plugins_LTLIBRARIES = xiph.la
+ xiph_la_SOURCES = xiph.c
+-xiph_la_LDFLAGS = -avoid-version -module $(LIBXML_LIBS)
++xiph_la_LDFLAGS = -avoid-version -module
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(ST_CFLAGS) $(LIBXML_CFLAGS)
+ all: all-am
+ 

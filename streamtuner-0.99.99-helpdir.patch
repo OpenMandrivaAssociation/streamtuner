@@ -1,0 +1,8 @@
+--- streamtuner-0.99.99/common.make~	2004-12-11 03:01:37.000000000 +0100
++++ streamtuner-0.99.99/common.make	2007-07-31 13:58:45.000000000 +0200
+@@ -1,4 +1,4 @@
+-basedocdir = $(datadir)/help/@PACKAGE@
++basedocdir = $(datadir)/gnome/help/@PACKAGE@
+ pluginsdir = $(pkglibdir)/plugins
+ uidir = $(pkgdatadir)/ui
+ 

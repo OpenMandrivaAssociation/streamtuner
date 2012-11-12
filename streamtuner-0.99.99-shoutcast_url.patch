@@ -1,0 +1,11 @@
+--- src/plugins/shoutcast/shoutcast.c	2004-12-19 16:21:00.000000000 +0100
++++ src/plugins/shoutcast/shoutcast.c.oli	2009-01-08 18:34:39.173691394 +0100
+@@ -37,7 +37,7 @@
+ 
+ /*** cpp *********************************************************************/
+ 
+-#define SHOUTCAST_ROOT		"http://www.shoutcast.com/"
++#define SHOUTCAST_ROOT		"http://classic.shoutcast.com/"
+ 
+ #define MAX_STREAMS_PER_PAGE	100 /* enforced by SHOUTcast */
+

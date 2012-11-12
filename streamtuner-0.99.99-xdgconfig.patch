@@ -1,0 +1,82 @@
+--- src/plugins/live365/live365.c	2004-12-19 11:27:03.000000000 +0100
++++ src/plugins/live365/live365.c	2006-11-23 10:10:11.000000000 +0100
+@@ -1410,8 +1410,8 @@
+   init_handler();
+ 
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+-  st_action_register("view-web", _("Open a web page"), "epiphany %q");
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("view-web", _("Open a web page"), "xdg-open %q");
++  st_action_register("play-stream", _("Listen to a stream"), "xdg-open %q");
+ 
+   return TRUE;
+ }
+
+--- src/plugins/local/local.c	2004-12-13 08:39:29.000000000 +0100
++++ src/plugins/local/local.c	2006-11-23 10:10:11.000000000 +0100
+@@ -1057,8 +1057,8 @@
+ 
+   init_handler();
+ 
+-  st_action_register("play-m3u", _("Listen to a .m3u file"), "xmms %q");
+-  st_action_register("view-web", _("Open a web page"), "epiphany %q");
++  st_action_register("play-m3u", _("Listen to a .m3u file"), "xdg-open %q");
++  st_action_register("view-web", _("Open a web page"), "xdg-open %q");
+ 
+   return TRUE;
+ }
+
+--- src/plugins/shoutcast/shoutcast.c	2004-12-19 16:21:00.000000000 +0100
++++ src/plugins/shoutcast/shoutcast.c	2006-11-23 10:10:11.000000000 +0100
+@@ -959,9 +959,9 @@
+ 
+   init_handler();
+   
+-  st_action_register("play-m3u", _("Listen to a .m3u file"), "xmms %q");
++  st_action_register("play-m3u", _("Listen to a .m3u file"), "xdg-open %q");
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+-  st_action_register("view-web", _("Open a web page"), "epiphany %q");
++  st_action_register("view-web", _("Open a web page"), "xdg-open %q");
+ 
+   return TRUE;
+ }
+
+--- src/plugins/xiph/xiph.c	2004-12-13 10:57:33.000000000 +0100
++++ src/plugins/xiph/xiph.c	2006-11-23 10:10:11.000000000 +0100
+@@ -957,7 +957,7 @@
+   init_handler();
+ 
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("play-stream", _("Listen to a stream"), "xdg-open %q");
+ 
+   return TRUE;
+ }
+
+--- src/streamtuner/st-action.c	2004-12-18 10:56:42.000000000 +0100
++++ src/streamtuner/st-action.c	2006-11-23 10:10:11.000000000 +0100
+@@ -123,7 +123,7 @@
+ {
+   actions = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
+ 
+-  st_action_register("view-web", _("Open a web page"), "epiphany %q");
++  st_action_register("view-web", _("Open a web page"), "xdg-open %q");
+   st_action_register("view-ghelp", _("Open a GNOME help document"), "yelp %q");
+ }
+ 
+
+--- src/streamtuner/st-preselections.c	2004-12-13 10:57:52.000000000 +0100
++++ src/streamtuner/st-preselections.c	2006-11-23 10:10:11.000000000 +0100
+@@ -390,9 +390,9 @@
+ {
+   st_preselections_init_handler();
+   
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("play-stream", _("Listen to a stream"), "xdg-open %q");
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+-  st_action_register("view-web", _("Open a web page"), "epiphany %q");
++  st_action_register("view-web", _("Open a web page"), "xdg-open %q");
+ }
+ 
+ void
+
