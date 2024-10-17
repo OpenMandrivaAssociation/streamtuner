@@ -13,7 +13,7 @@ Patch1:		%{name}-%{version}-helpdir.patch
 Patch2:		%{name}-%{version}-xdgconfig.patch
 Patch3:		%{name}-%{version}-shoutcast_url.patch
 Patch4:		streamtuner-0.99.99-fix-link.patch
-URL:		http://www.nongnu.org/streamtuner/
+URL:		https://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
