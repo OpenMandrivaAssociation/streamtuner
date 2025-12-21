@@ -17,6 +17,11 @@ URL:		https://www.nongnu.org/streamtuner/
 License:	GPL
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: 	gtk2-devel, imagemagick, scrollkeeper, curl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gtk-doc intltool
